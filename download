@@ -1,0 +1,35 @@
+import javax.swing.*; //swing ile grafik arayüzü yapmak için bu kodu kullanıyoruz.
+import java.awt.*; //layout için bu  sayfada cardlayout kullanılıyor
+
+public class Main {
+
+    public static void main(String[] args) {
+
+
+        SwingUtilities.invokeLater(() -> {
+
+
+            JFrame frame = new JFrame("Fitness Kalori Paneli");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(900, 550);
+            frame.setLocationRelativeTo(null);
+            frame.setResizable(true);
+
+
+            CardLayout cardLayout = new CardLayout();
+            JPanel mainPanel = new JPanel(cardLayout);
+
+
+            AnaEkran anaEkran = new AnaEkran(cardLayout, mainPanel);
+            Egzersiz egzersiz = new Egzersiz(cardLayout, mainPanel);
+
+
+            mainPanel.add(anaEkran, "ANA");
+            mainPanel.add(egzersiz, "EGZERSIZ");
+
+
+            frame.add(mainPanel);
+            frame.setVisible(true);
+        });
+    }
+}
